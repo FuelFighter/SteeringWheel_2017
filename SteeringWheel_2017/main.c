@@ -9,6 +9,7 @@
 // #include "adc.h"
 #include "usbdb.h"
 #include <util/delay.h>
+#include "UniversalModuleDrivers/adc.h"
 
 int main(void)
 {
