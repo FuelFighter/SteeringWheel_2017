@@ -5,20 +5,24 @@
  * Author : Sondre
  */ 
 
+#define F_CPU 8000000UL
 #include <avr/io.h>
-#include "usbdb.h"
 #include <util/delay.h>
+#include "usbdb.h"
 #include "UniversalModuleDrivers/adc.h"
 #include "buttons_management.h"
+#include "calibrate.h"
+#include "UniversalModuleDrivers/timer.h"
 
 int main(void)
 {	
-	usbdbg_init();
-	adc_init();
-	buttons_init();
+	usbdbg_init();	//init usb communication
+	adc_init();		//init adc
+	buttons_init();	//init buttons
+	timer_init();	//init timer
 	
-	while (1)
-	{
+	// calibrate();	//calibrate joystick, and throttles
+	while (1) {
 		printf("Horn: %d\nJoyB: %d\nCCon: %d\nRigh: %d\nLeft: %d\n",button_is_pressed(Horn), button_is_pressed(JoyButton),button_is_pressed(CruiseControl),button_is_pressed(Right),button_is_pressed(Left));
 		printf("ThrL: %u \n",adc_read(CH_ADC0));
 		printf("ThrR: %u \n",adc_read(CH_ADC1));
