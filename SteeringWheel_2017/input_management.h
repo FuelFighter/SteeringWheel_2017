@@ -29,6 +29,6 @@ typedef enum {
 
 void buttons_init();
 bool button_is_pressed(button_t button);
-float cal_adc_read(adc_t adc_val, uint16_t min, uint16_t max);
+uint16_t cal_adc_read(adc_t adc_val, uint16_t min, uint16_t max);
 
 #endif /* BUTTONS_MANAGEMENT_H_ */

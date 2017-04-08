@@ -30,6 +30,10 @@ bool button_is_pressed(button_t button) {
 	return !((1<<(int)button)&PINB);
 }
 
-float cal_adc_read(adc_t adc_val, uint16_t min, uint16_t max) {
-	return ( (float)adc_read(adc_val) / ((float)(max - min)/100) );
+uint16_t cal_adc_read(adc_t adc_val, uint16_t min, uint16_t max) {
+	float min_f = (float)min;
+	float max_f = (float)max;
+	float adc_f = (float)adc_read(adc_val);
+	float result_f = ( (adc_f - min_f) / ( (max_f - min_f) / 100 ) );
+	return (uint16_t)result_f;
 }

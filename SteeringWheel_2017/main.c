@@ -26,10 +26,10 @@ int main(void)
 	Cvalues_struct cal_vals = calibrate();	//calibrate joystick, and throttles
 	while (1) {
 		printf("Horn: %d\nJoyB: %d\nCCon: %d\nRigh: %d\nLeft: %d\n",button_is_pressed(Horn), button_is_pressed(JoyButton),button_is_pressed(CruiseControl),button_is_pressed(Right),button_is_pressed(Left));
-		printf("ThrL: %.2f \n",cal_adc_read(ThrL, cal_vals.minTL, cal_vals.maxTL));
-		printf("ThrR: %.2f \n",cal_adc_read(ThrR, cal_vals.minTR, cal_vals.maxTR));
-		printf("JoyX: %.2f \n",cal_adc_read(JoyX, cal_vals.minJAx, cal_vals.maxJAx));
-		printf("JoyY: %.2f \n",cal_adc_read(JoyZ, cal_vals.minJAz, cal_vals.maxJAz));
+		printf("ThrL: %u\n",cal_adc_read(ThrL, cal_vals.minTL, cal_vals.maxTL));
+		printf("ThrR: %u\n",100 - cal_adc_read(ThrR, cal_vals.minTR, cal_vals.maxTR));
+		printf("JoyX: %u\n",100 - cal_adc_read(JoyX, cal_vals.minJAx, cal_vals.maxJAx));
+		printf("JoyY: %u\n",cal_adc_read(JoyZ, cal_vals.minJAz, cal_vals.maxJAz));
 		printf("\n");
 		_delay_ms(50);
 	}
