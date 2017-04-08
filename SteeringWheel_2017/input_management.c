@@ -6,8 +6,8 @@
  */ 
 
 #include <avr/io.h>
-#include "usbdb.h"
-#include "buttons_management.h"
+#include "input_management.h"
+#include "calibrate.h"
 
 void buttons_init() {
 	PORTB |= (1<<PB4); //Initiate (input) PE3, indicator left
@@ -27,5 +27,9 @@ void buttons_init() {
 }
 
 bool button_is_pressed(button_t button) {
-	 return !((1<<(int)button)&PINB);
+	return !((1<<(int)button)&PINB);
+}
+
+float cal_adc_read(adc_t adc_val, uint16_t min, uint16_t max) {
+	return ( (float)adc_read(adc_val) / ((float)(max - min)/100) );
 }

@@ -38,6 +38,18 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
+    <avrtoolserialnumber>J41800031624</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x1E9781</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_atmelice>
+      <ToolOptions xmlns="">
+        <InterfaceProperties>
+        </InterfaceProperties>
+      </ToolOptions>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.atmelice</ToolType>
+      <ToolNumber xmlns="">J41800031624</ToolNumber>
+      <ToolName xmlns="">Atmel-ICE</ToolName>
+    </com_atmel_avrdbg_tool_atmelice>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -122,10 +134,10 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="buttons_management.c">
+    <Compile Include="input_management.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="buttons_management.h">
+    <Compile Include="input_management.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="calibrate.c">
@@ -141,6 +153,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="UniversalModuleDrivers\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UniversalModuleDrivers\can.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UniversalModuleDrivers\can.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="UniversalModuleDrivers\rgbled.c">
