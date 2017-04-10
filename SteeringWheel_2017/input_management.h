@@ -13,18 +13,18 @@
 #include "calibrate.h"
 
 typedef enum {
-	JoyButton = PINB0,
-	Horn = PINB1,
-	CruiseControl = PINB2,
-	Left = PINB3,
-	Right = PINB4
+	joyButton = PINB0,
+	horn = PINB1,
+	cruiseControl = PINB2,
+	left = PINB3,
+	right = PINB4
 } button_t;
 
 typedef enum {
-	JoyX = CH_ADC2,
-	JoyZ = CH_ADC3,
-	ThrR = CH_ADC1,
-	ThrL = CH_ADC0
+	joyX = CH_ADC2,
+	joyZ = CH_ADC3,
+	thrR = CH_ADC1,
+	thrL = CH_ADC0
 } adc_t;
 
 void buttons_init();

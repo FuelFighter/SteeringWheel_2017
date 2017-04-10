@@ -21,5 +21,7 @@ typedef struct {
 } Cvalues_struct ;
 
 Cvalues_struct calibrate(void);
+Cvalues_struct load_calibration_values(void);
+bool is_calibrated_correctly(Cvalues_struct cal_vals);
 
 #endif /* CALIBRATE_H_ */
