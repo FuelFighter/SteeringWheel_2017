@@ -11,10 +11,12 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include "usbdb.h"
-#include "UniversalModuleDrivers/adc.h"
+#include "UniversalModuleDrivers/can.h"
 #include "input_management.h"
 #include "calibrate.h"
+#include "can_send.h"
 #include "UniversalModuleDrivers/timer.h"
+#include "UniversalModuleDrivers/adc.h"
 
 int main(void)
 {	
@@ -22,6 +24,8 @@ int main(void)
 	adc_init();		//init adc
 	buttons_init();	//init buttons
 	timer_init();	//init timer
+	adc_init();
+	can_init(0x00, 0x00);
 	sei();
 	
 	Cvalues_struct cal_vals = load_calibration_values();	//calibrate joystick, and throttle
@@ -38,11 +42,14 @@ int main(void)
 		buttons[7] = cal_adc_read(joyZ, cal_vals.minJAz, cal_vals.maxJAz);
 		buttons[8] = 100 - cal_adc_read(joyX, cal_vals.minJAx, cal_vals.maxJAx);
 		if(buttons[0] && buttons[3] && !car_moving) { //TODO can't calibrate while vehicle is moving
-			//TODO? Send can frame saying its calibrating
+			can_send_calibrating(cal_vals);
 			cal_vals = calibrate();
 		}
-		printf("JoyB: %d\nHorn: %d\nCCon: %d\nLeft: %d\nRigh: %d\n",buttons[0], buttons[1], buttons[2], buttons[3], buttons[4]);
-		printf("ThrL: %d\nThrR: %d\nJoyZ: %d\nJoyX: %d\n",buttons[5], buttons[6], buttons[7], buttons[8]);
-		_delay_ms(50);
+		
+		//printf("JoyB: %d\nHorn: %d\nCCon: %d\nLeft: %d\nRigh: %d\n\n",buttons[0], buttons[1], buttons[2], buttons[3], buttons[4]);	//print buttons
+		printf("ThrL: %d\nThrR: %d\nJoyZ: %d\nJoyX: %d\n\n",buttons[5], buttons[6], buttons[7], buttons[8]);	//print calibrated adc values
+		
+		can_send_status(cal_vals);
+		_delay_ms(50); //delay 50 ms
 	}
 }

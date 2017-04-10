@@ -8,6 +8,9 @@
 
 #ifndef CALIBRATE_H_
 #define CALIBRATE_H_
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdbool.h>
 
 typedef struct {
 	uint16_t minTL;
