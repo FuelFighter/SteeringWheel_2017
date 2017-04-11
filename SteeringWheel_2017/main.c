@@ -25,7 +25,7 @@ int main(void)
 	buttons_init();	//init buttons
 	timer_init();	//init timer
 	adc_init();
-	can_init(0x00, 0x00);
+	can_init(0, 0);
 	sei();
 	
 	Cvalues_struct cal_vals = load_calibration_values();	//calibrate joystick, and throttle
@@ -41,7 +41,7 @@ int main(void)
 		buttons[6] = 100 - cal_adc_read(thrR, cal_vals.minTR, cal_vals.maxTR);
 		buttons[7] = cal_adc_read(joyZ, cal_vals.minJAz, cal_vals.maxJAz);
 		buttons[8] = 100 - cal_adc_read(joyX, cal_vals.minJAx, cal_vals.maxJAx);
-		if(buttons[0] && buttons[3] && !car_moving) { //TODO can't calibrate while vehicle is moving
+		if(buttons[0] && buttons[3] && car_moving) { //TODO can't calibrate while vehicle is moving
 			can_send_calibrating(cal_vals);
 			cal_vals = calibrate();
 		}
