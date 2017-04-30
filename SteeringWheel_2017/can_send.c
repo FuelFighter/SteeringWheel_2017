@@ -26,6 +26,7 @@ void can_send_status(Cvalues_struct cal_vals){
 	
 	can_send_message(&msg);
 }
+
 void can_send_calibrating(Cvalues_struct cal_vals) {
 	CanMessage_t msg;
 	

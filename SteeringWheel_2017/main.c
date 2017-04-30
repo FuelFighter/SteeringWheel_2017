@@ -5,7 +5,6 @@
  * Author : Sondre
  */ 
 
-#define F_CPU 8000000UL
 #define car_moving true
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -46,7 +45,7 @@ int main(void)
 			cal_vals = calibrate();
 		}
 		
-		//printf("JoyB: %d\nHorn: %d\nCCon: %d\nLeft: %d\nRigh: %d\n\n",buttons[0], buttons[1], buttons[2], buttons[3], buttons[4]);	//print buttons
+		printf("JoyB: %d\nHorn: %d\nCCon: %d\nLeft: %d\nRigh: %d\n\n",buttons[0], buttons[1], buttons[2], buttons[3], buttons[4]);	//print buttons
 		printf("ThrL: %d\nThrR: %d\nJoyZ: %d\nJoyX: %d\n\n",buttons[5], buttons[6], buttons[7], buttons[8]);	//print calibrated adc values
 		
 		can_send_status(cal_vals);
