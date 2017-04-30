@@ -9,7 +9,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include "usbdb.h"
+#include "UniversalModuleDrivers/usbdb.h"
 #include "UniversalModuleDrivers/can.h"
 #include "input_management.h"
 #include "calibrate.h"
@@ -45,10 +45,10 @@ int main(void)
 			cal_vals = calibrate();
 		}
 		
-		printf("JoyB: %d\nHorn: %d\nCCon: %d\nLeft: %d\nRigh: %d\n\n",buttons[0], buttons[1], buttons[2], buttons[3], buttons[4]);	//print buttons
-		printf("ThrL: %d\nThrR: %d\nJoyZ: %d\nJoyX: %d\n\n",buttons[5], buttons[6], buttons[7], buttons[8]);	//print calibrated adc values
+		//printf("JoyB: %d\nHorn: %d\nCCon: %d\nLeft: %d\nRigh: %d\n\n",buttons[0], buttons[1], buttons[2], buttons[3], buttons[4]);	//print buttons
+		//printf("ThrL: %d\nThrR: %d\nJoyZ: %d\nJoyX: %d\n\n",buttons[5], buttons[6], buttons[7], buttons[8]);	//print calibrated adc values
 		
 		can_send_status(cal_vals);
-		_delay_ms(50); //delay 50 ms
+		_delay_ms(100); //delay 50 ms
 	}
 }

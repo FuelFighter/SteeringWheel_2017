@@ -13,7 +13,7 @@
 void can_send_status(Cvalues_struct cal_vals){
 	CanMessage_t msg;
 	
-	msg.id = CAN_ID_STEERINGWHEEL;
+	msg.id = STEERING_WHEEL_CAN_ID;
 	msg.length = 6;
 	msg.data[0] = (uint8_t) 0; // calibrating?
 	msg.data[1] = (uint8_t) ((button_is_pressed(joyButton) << 0)|(button_is_pressed(horn) << 1)|(button_is_pressed(cruiseControl) << 2)|(button_is_pressed(left) << 3)|(button_is_pressed(right) << 4)); // buttons in form: 0b00011111 if all pressed
@@ -30,7 +30,7 @@ void can_send_status(Cvalues_struct cal_vals){
 void can_send_calibrating(Cvalues_struct cal_vals) {
 	CanMessage_t msg;
 	
-	msg.id = CAN_ID_STEERINGWHEEL;
+	msg.id = STEERING_WHEEL_CAN_ID;
 	msg.length = 6;
 	msg.data[0] = (uint8_t) 1; // calibrating?
 	msg.data[1] = (uint8_t) ((button_is_pressed(joyButton) << 0)|(button_is_pressed(horn) << 1)|(button_is_pressed(cruiseControl) << 2)|(button_is_pressed(left) << 3)|(button_is_pressed(right) << 4)); // buttons in form: 0b00011111 if all pressed

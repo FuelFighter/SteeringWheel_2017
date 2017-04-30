@@ -9,7 +9,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 #include "calibrate.h"
-#include "usbdb.h"
+#include "UniversalModuleDrivers/usbdb.h"
 #include "UniversalModuleDrivers/adc.h"
 #include "UniversalModuleDrivers/timer.h"
 

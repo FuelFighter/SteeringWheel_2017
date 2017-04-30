@@ -191,11 +191,13 @@
     <Compile Include="UniversalModuleDrivers\uart.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="usbdb.c">
+    <Compile Include="UniversalModuleDrivers\usbdb.c">
       <SubType>compile</SubType>
+      <Link>usbdb.c</Link>
     </Compile>
-    <Compile Include="usbdb.h">
+    <Compile Include="UniversalModuleDrivers\usbdb.h">
       <SubType>compile</SubType>
+      <Link>usbdb.h</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
